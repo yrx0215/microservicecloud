@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnshu.microservicecloud.mapper.StudentMapper">
+
+    <!--Student findStuById(Long id);-->
+    <select id="findStuById" resultType="com.jnshu.microservicecloud.beans.Student" parameterType="Long">
+        select id, user_name, pwd, phone, create_at from student where id=#{id};
+    </select>
+
+    <!-- List findAllStu();-->
+    <select id="findAllStu" resultType="com.jnshu.microservicecloud.beans.Student">
+        select id, user_name, pwd, phone, create_at from student;
+    </select>
+
+    <!--public Boolean addStu(Student student)-->
+    <insert id="addStu" parameterType="com.jnshu.microservicecloud.beans.Student">
+        INSERT INTO student(user_name, pwd, phone) VALUES(#{userName},#{pwd},#{phone});
+    </insert>
+
+</mapper>
