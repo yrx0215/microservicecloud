@@ -3,15 +3,13 @@ package com.jnshu.microservicecloud.controller;
 import com.jnshu.microservicecloud.beans.Student;
 import com.jnshu.microservicecloud.service.StudentClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@FeignClient(value = "MICROSERVICECLOUD-STU")
 public class StudentController {
-
-//    private static final  String REST_URL = "http://localhost:8001";
-    private static final  String REST_URL = "http://MICROSERVICECLOUD-STU";
 
     @Autowired
     private StudentClientService studentClientService ;
