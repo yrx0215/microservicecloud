@@ -3,16 +3,15 @@ package com.jnshu.microservicecloud.controller;
 import com.jnshu.microservicecloud.beans.Student;
 import com.jnshu.microservicecloud.service.StudentClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "MICROSERVICECLOUD-STU")
+@RestController
 public class StudentController {
 
     @Autowired
-    private StudentClientService studentClientService ;
+    StudentClientService studentClientService = null;
 
     @RequestMapping(value = "/consumer/stu/add",method = RequestMethod.POST)
     public Boolean add(@RequestBody Student student){
@@ -28,9 +27,5 @@ public class StudentController {
     public List<Student> getAll(){
         return studentClientService.getAll();
     }
-
-
-
-
 
 }
